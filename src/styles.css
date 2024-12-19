@@ -1,0 +1,145 @@
+/* src/styles.css o src/app/map/map.component.css */
+
+/* Paleta de colores propuesta:
+   - Azul principal: #4A90E2
+   - Azul hover más oscuro: #3A78BF
+   - Texto en blanco: #FFFFFF
+   - Fondo semitransparente: rgba(255, 255, 255, 0.9)
+   - Sombra sutil: rgba(0, 0, 0, 0.2)
+*/
+
+/* Contenedor del mapa */
+.map-container {
+    width: 100%;
+    height: 100vh; /* Ajusta según tu layout */
+    position: relative;
+    background: #f0f4f8; /* Fondo claro sutil para el mapa */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente elegante */
+  }
+  
+  /* Ajustes generales para todos los controles */
+  .custom-zoom-control,
+  .custom-scale-line,
+  .custom-atribution-control,
+  .custom-zoom-to-extent {
+    font-family: inherit;
+    font-size: 13px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Control de Zoom (ZoomSlider) */
+  .custom-zoom-control {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(to bottom, #4A90E2, #4178b5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .custom-zoom-control button {
+    background: #ffffff;
+    border: none;
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    color: #4A90E2;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 3px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .custom-zoom-control button:hover {
+    background-color: #e1e9f2;
+    color: #3A78BF;
+  }
+  
+  /* Scale Line */
+  .custom-scale-line {
+    position: absolute;
+    bottom: 60px; /* Por encima del ZoomSlider */
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #4A90E2;
+    border: 1px solid #d0d7de;
+  }
+  
+  /* Attribution */
+  .custom-atribution-control {
+    position: absolute;
+    bottom: 100px; /* Ajusta la posición según tus necesidades */
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #4A90E2;
+    border: 1px solid #d0d7de;
+  }
+  
+  /* ZoomToExtent */
+  .custom-zoom-to-extent {
+    position: absolute;
+    bottom: 140px; /* Por encima de attribution y scale line */
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #4A90E2;
+    border: 1px solid #d0d7de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Opcional: Iconos o contenido extra para ZoomToExtent */
+  .custom-zoom-to-extent button {
+    background: none;
+    border: none;
+    color: #4A90E2;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+  }
+  
+  .custom-zoom-to-extent button:hover {
+    color: #3A78BF;
+  }
+  
+  /* Ajustes Responsivos (Opcional) */
+  @media (max-width: 576px) {
+    .custom-zoom-control,
+    .custom-scale-line,
+    .custom-atribution-control,
+    .custom-zoom-to-extent {
+      font-size: 11px;
+    }
+  
+    .custom-zoom-control button {
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+    }
+  
+    /* Mover controles si es necesario */
+    .custom-zoom-control { bottom: 10px; right: 10px; }
+    .custom-scale-line { bottom: 50px; right: 10px; }
+    .custom-atribution-control { bottom: 90px; right: 10px; }
+    .custom-zoom-to-extent { bottom: 130px; right: 10px; }
+  }
+  
