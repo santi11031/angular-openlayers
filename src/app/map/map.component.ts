@@ -6,14 +6,17 @@ import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
 import { XYZ } from 'ol/source';
 import { fromLonLat } from 'ol/proj';
-import { Attribution, defaults as defaultControls, ScaleLine, ZoomSlider, ZoomToExtent } from 'ol/control';
+import { Attribution, defaults as defaultControls, ScaleLine, ZoomSlider, ZoomToExtent, FullScreen } from 'ol/control';
 import { Style, Fill, Stroke, Circle as CircleStyle, Text } from 'ol/style';
 import Overlay from 'ol/Overlay';
 import GeoJSON from 'ol/format/GeoJSON';
-import LayerSwitcher from 'ol-layerswitcher';
 import LayerGroup from 'ol/layer/Group';
 import VectorSource from 'ol/source/Vector';
+import * as Control from 'ol/control'; 
+import Legend from 'ol-ext/control/Legend';
 
+
+// Importación corregida
 @Component({
   selector: 'app-map',
   template: `
@@ -91,6 +94,15 @@ export class MapComponent implements OnInit {
         }),
         visible: true
       });
+      
+
+      
+
+      // Import the layer switcher control
+
+
+
+
 
       const vectorSource = new VectorSource({
         url: 'datos_manta_general_nuevo.geojson',
@@ -129,14 +141,28 @@ export class MapComponent implements OnInit {
         layers: [this.layerGroup],  // Agregar el grupo de capas al mapa
         view: mapView,
         controls: defaultControls({
-          zoom: false,
-          rotate: false,
-          attribution: false
+          zoom: true,
+          rotate: true,
+          attribution: true,
+          
         })
       });
 
       vectorLayer.set('name', 'Datos de Nemocón');
       this.map.addLayer(vectorLayer);
+
+      /*const leyenda = new Legend({
+
+        title: 'Leyenda',
+        target: 'info'
+
+
+
+      });
+
+      this.map.addControl(leyenda);*/
+
+
 
       this.overlay = new Overlay({
         element: this.popup.nativeElement,
@@ -170,6 +196,10 @@ export class MapComponent implements OnInit {
       this.createLegend();
     }
   }
+
+  
+
+  
 
   onMapChange(event: any) {
     // Cambiar la capa base según la selección
@@ -223,6 +253,12 @@ export class MapComponent implements OnInit {
     layers.clear();  // Limpiar las capas del grupo
     layers.push(selectedLayer);  // Añadir la nueva capa base seleccionada
   }
+
+
+  
+  
+
+  
   
 
   closePopup(event: MouseEvent) {
